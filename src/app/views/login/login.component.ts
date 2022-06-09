@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { of, switchMap } from 'rxjs';
 import { Store } from '@ngrx/store'
-import { AuthService } from 'src/app/services/auth.service';
-import { login, loginComplete } from 'src/app/store/auth';
-import { Router } from '@angular/router';
+import { login } from 'src/app/store/auth';
 
 @Component({
   selector: 'app-login',

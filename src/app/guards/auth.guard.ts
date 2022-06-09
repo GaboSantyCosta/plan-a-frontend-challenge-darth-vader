@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { CanActivate, Router, UrlTree } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { map, Observable, take, tap } from 'rxjs';
 import { selectIsAuthenticated } from '../store/auth';
@@ -15,18 +15,16 @@ export class AuthGuard implements CanActivate {
     private router: Router
   ){}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> {
-      return this.store.select(selectIsAuthenticated).pipe(
-        take(1),
-        map(user => !!user),
-        tap(loggedIn => {
-          if (!loggedIn) {
-            this.router.navigate(['/login'])
-          }
-        })
-      )
-    }
+  canActivate(): Observable<boolean | UrlTree> {
+    return this.store.select(selectIsAuthenticated).pipe(
+      map((isLoggedIn:boolean) => {
+        if (!isLoggedIn) {
+          this.router.navigate(['/login'])
+          return false
+        }
+        return true
+      })
+    )
+  }
   
 }

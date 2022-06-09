@@ -21,7 +21,7 @@ export class AuthService {
 		private http: HttpClient
 	) { }
 
-	private getToken():Observable<any>{
+	public getToken():Observable<any>{
 		let httpOptions = this.setHeaders()
 		let path = environment.themoviedb.url + `/authentication/token/new`;
 		return this.http.get<any>(path, httpOptions)
