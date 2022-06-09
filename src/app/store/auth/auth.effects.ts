@@ -14,7 +14,10 @@ export class AuthEffects {
             mergeMap((actions) => this.authService.doLogin(actions.username,actions.password)
                 .pipe(
                     map(() => ({type:'[Auth] loginComplete',user:actions.username,isLoggedIn:true})),
-                    catchError(()=>EMPTY)
+                    catchError((res)=>{
+                        alert(res.error.status_message)
+                        return EMPTY
+                    })
                 )
             ),
             tap(() => this.router.navigate(['/']))

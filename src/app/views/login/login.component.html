@@ -1,8 +1,8 @@
-
+<div class="login">
+	<h3>Are you a Lord Sith?</h3>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
-      <label>Email</label>
-      <input autocomplete="off" type="email" placeholder="correo@ejemplo.com" name="email" formControlName="email">
-      <label>Password</label>
-      <input type="password" autocomplete="off" placeholder="mypass" name="password" formControlName="password">
-      <button type="submit" [disabled]="!loginForm.valid">Enviar</button>
+    <input autocomplete="off" type="email" placeholder="planatest@example.com" name="email" formControlName="email">
+    <input type="password" autocomplete="off" placeholder="123456" name="password" formControlName="password">
+    <button class="btn btn-block btn-large" type="submit" [disabled]="!loginForm.valid">LOGIN</button>
   </form>
+</div>

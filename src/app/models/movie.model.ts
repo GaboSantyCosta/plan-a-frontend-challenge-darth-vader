@@ -4,6 +4,7 @@ export interface Movie {
     id: number,
     original_language: string,
     original_title: string,
+    genres: Genre[],
     overview: string,
     popularity: number,
     poster_path: string,
@@ -15,4 +16,9 @@ export interface Movie {
     video: boolean,
     vote_average: number,
     vote_count: number
+}
+
+interface Genre {
+    id: number,
+    name: string
 }
