@@ -1,1 +1,2 @@
-<p>home works!</p>
+<p *ngIf="loadingMovie$ | async">Cargando...</p>
+<p *ngIf="latestMovie$ | async;let latestMovie">{{latestMovie.title}}</p>
