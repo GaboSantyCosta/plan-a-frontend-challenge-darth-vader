@@ -1,3 +1,4 @@
+<ng-container *ngIf="user$ | async;let user">Bienvenido {{user}}</ng-container>
 <button routerLink="home">Home</button>
 <button routerLink="login">Login</button>
 <router-outlet></router-outlet>

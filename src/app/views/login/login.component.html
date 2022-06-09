@@ -1,1 +1,8 @@
-<p>login works!</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmitForm()">
+      <label>Email</label>
+      <input autocomplete="off" type="email" placeholder="correo@ejemplo.com" name="email" formControlName="email">
+      <label>Password</label>
+      <input type="password" autocomplete="off" placeholder="mypass" name="password" formControlName="password">
+      <button type="submit" [disabled]="!loginForm.valid">Enviar</button>
+  </form>
