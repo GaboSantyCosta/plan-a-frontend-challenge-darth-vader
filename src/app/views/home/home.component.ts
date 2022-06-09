@@ -24,4 +24,10 @@ export class HomeComponent implements OnInit {
     this.latestMovie$ = this.store.select(selectMovieInfo)
   }
 
+  convertMinutesToHours(min:number):string{
+    let hours = min > 60 ? Math.floor(min / 60) + 'h ' : '';          
+    let minutes = min % 60 + 'min';
+    return hours + minutes
+  }
+
 }

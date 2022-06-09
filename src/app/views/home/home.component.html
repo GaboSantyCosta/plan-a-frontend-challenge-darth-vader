@@ -1,2 +1,35 @@
 <p *ngIf="loadingMovie$ | async">Cargando...</p>
-<p *ngIf="latestMovie$ | async;let latestMovie">{{latestMovie.title}}</p>
+
+<div class="container" *ngIf="latestMovie$ | async;let latestMovie">
+    <div class="cellphone-container">    
+        <div class="movie">
+            <div class="movie-img" [ngStyle]="{'background-image': 'url(' + (latestMovie.poster_path ? latestMovie.poster_path : 'https://i.ibb.co/FDGqCmM/papers-co-ag74-interstellar-wide-space-film-movie-art-33-iphone6-wallpaper.jpg') + ')'}"></div>
+            <div class="text-movie-cont">
+                <div class="mr-grid">
+                    <div class="col1">
+                        <h1>{{latestMovie.title ? latestMovie.title : latestMovie.original_title}}</h1>
+                        <ul class="movie-gen">
+                            <li>{{latestMovie.adult ? 'PG-18' : 'PG-13'}}  /</li>
+                            <li>{{convertMinutesToHours(latestMovie.runtime)}}  <ng-container *ngIf="latestMovie.genres.length > 0">/</ng-container> </li>
+                            <li>
+                                <ng-container *ngFor="let genre of latestMovie.genres">
+                                    {{genre.name}}
+                                </ng-container>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mr-grid summary-row">
+                    <div class="col2">
+                        <h5>SUMMARY</h5>
+                    </div>
+                </div>
+                <div class="mr-grid">
+                    <div class="col1">
+                        <p class="movie-description">{{latestMovie.overview}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

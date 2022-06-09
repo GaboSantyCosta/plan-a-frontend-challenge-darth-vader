@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
         this.store.dispatch(login({username:'planatest',password:this.loginForm.value.password}))
       }
     }catch(error){
-      console.log(error)
+      alert(error)
     }
   }
 
